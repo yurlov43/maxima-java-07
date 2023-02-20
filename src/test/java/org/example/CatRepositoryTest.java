@@ -15,7 +15,7 @@ public class CatRepositoryTest {
 
     @Before
     public void init() {
-        repo = new SimpleCatRepository("cats");
+        repo = new SimpleCatRepository("jdbc:h2:mem:test", "cats");
     }
 
     @Test

@@ -7,20 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleCatRepository implements CatRepository {
-    public static final String DB_URL = "jdbc:h2:mem:test";
     private String dBName;
     private Connection connection;
     private Statement statement;
 
-    public SimpleCatRepository(String dBName) {
+    public SimpleCatRepository(String dB_URL, String dBName) {
         this.dBName = dBName;
-        connectToDB();
+        connectToDB(dB_URL);
         createTable();
     }
     
-    private void connectToDB() {
+    private void connectToDB(String dB_URL) {
         try {
-            connection = DriverManager.getConnection(DB_URL);
+            connection = DriverManager.getConnection(dB_URL);
             System.out.println("Соединение к БД выполнено!");
         } catch (SQLException e) {
             e.printStackTrace();
